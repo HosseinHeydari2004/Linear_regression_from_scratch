@@ -5,15 +5,21 @@ import pandas as pd
 class LinearRegression_scratch:
     """ """
 
-    def fit(self, x_train: np.array | pd.DataFrame, y_train: np.array | pd.DataFrame):
-        total_feature = x_train.shape[1]
-        y = x_train
-        y_real = None
+    def __init__(self):
+        self.w = None
+        self.b = None
 
-        def Gradian_desent():
-            pass
+    def predict(self, X):
+        """
+        Y = Xw + b
+        """
+        return X @ self.w + self.b
 
-        pass
-
-    def predict(self, x_test):
-        pass
+    def _compute_loss(self, X, Y):
+        """Mean Squared error loss\n
+        MSE = 1/n(sum(Y_real - y_pred))
+        """
+        Y_pred = self.predict(X)
+        Errors = Y - Y_pred
+        loss = np.mean(Errors**2)
+        return loss

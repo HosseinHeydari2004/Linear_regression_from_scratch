@@ -28,10 +28,3 @@ def virtuziation(x, y, title: str = "", xlabel: str = "", ylabel: str = ""):
     plt.savefig()
     plt.show()
 
-
-def run_model(x, y, name_model=LinearRegression):
-    pass
-
-
-def metrics():
-    pass
