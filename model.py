@@ -4,8 +4,7 @@ import numpy as np
 class LinearRegression_scratch:
     """Linear Regression implemented from scratch using Gradient Descent"""
 
-    def __init__(self, lr=0.01, n_iters=1000):
-        self.lr = lr
+    def __init__(self, n_iters=1000):
         self.n_iters = n_iters
         self.w = None
         self.b = None
@@ -21,7 +20,7 @@ class LinearRegression_scratch:
         """
         return X @ self.w + self.b
 
-    def _compute_loss(self, X, Y):
+    def _compute_loss(self, X: np.ndarray, Y: np.ndarray):
         """Mean Squared error loss\n
         MSE = 1/n(sum(Y_real - y_pred))
         """
@@ -30,7 +29,7 @@ class LinearRegression_scratch:
         loss = np.mean(Errors ** 2)
         return loss
 
-    def _compute_gradients(self, X: np.ndarray, Y):
+    def _compute_gradients(self, X: np.ndarray, Y: np.ndarray):
         """Compute gradients of loss w.r.t weights and bias"""
         n_samples = X.shape[0]
         y_pred = self.predict(X)
@@ -40,16 +39,19 @@ class LinearRegression_scratch:
         db = (2 / n_samples) * np.sum(Errors)
         return dw, db
 
-    def fit(self, X: np.ndarray, Y, Verbose=False):
+    def fit(self, X: np.ndarray, Y:np.ndarray, Verbose=False):
         """Train the model using Gradient Descent"""
         n_samples, n_feature = X.shape
         self.w = np.zeros(n_feature)
         self.b = 0.0
+        lr0 = 0.1
+        decay = 0.01
         for i in range(self.n_iters):
+            lr = lr0 / (1 + decay * i)
             dw, db = self._compute_gradients(X, Y)
             # Update parameters
-            self.w -= self.lr * dw
-            self.b -= self.lr * db
+            self.w -= lr * dw
+            self.b -= lr * db
             loss = self._compute_loss(X, Y)
             self.loss_history.append(loss)
 
