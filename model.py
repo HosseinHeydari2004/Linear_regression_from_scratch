@@ -2,7 +2,7 @@ import numpy as np
 
 
 class LinearRegression_scratch:
-    """Linear Regression implemented from scratch using Gradient Descent"""
+    """Linear Regression implemented from scratch using Gradient Descent with Auto learning rate"""
 
     def __init__(self, n_iters=1000):
         self.n_iters = n_iters
@@ -47,6 +47,7 @@ class LinearRegression_scratch:
         lr0 = 0.1
         decay = 0.01
         for i in range(self.n_iters):
+            # Auto learning rate
             lr = lr0 / (1 + decay * i)
             dw, db = self._compute_gradients(X, Y)
             # Update parameters
