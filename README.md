@@ -149,8 +149,8 @@ class LinearRegressionScratch:
 Hossein Heydari
 Computer Engineering Student | Junior Data Scientist and Machine Learning Engineer
 
-GitHub:<br>
-Kaggle:
+GitHub: https://github.com/HosseinHeydari2004/Linear_regression_from_scratch <br>
+Kaggle: https://www.kaggle.com/code/mrhosseinheydari/linear-regression-from-scratch
 
 ---
 
